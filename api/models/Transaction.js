@@ -6,6 +6,7 @@ const transactionSchema = new Schema({
   description: { type: String, required: true },
   amount: { type: Number, required: true },
   date: { type: Date, required: true },
+  category: { type: String, required: true, default: 'General' },
 }, {
   timestamps: true,
 });

@@ -8,7 +8,7 @@ const TransactionForm = ({ onTransactionAdded }) => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
-  const [error, setError] = useState('');
+  const [category, setCategory] = useState('General');
   const today = new Date().toISOString().split('T')[0];
   const onSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +17,7 @@ const TransactionForm = ({ onTransactionAdded }) => {
       description,
       amount,
       date,
+      category,
     };
 
     axios.post('/api/transactions/add', newTransaction)
@@ -28,6 +29,7 @@ const TransactionForm = ({ onTransactionAdded }) => {
     setDescription('');
     setAmount('');
     setDate('');
+    setCategory('General');
   };
 
   return (
@@ -45,6 +47,25 @@ const TransactionForm = ({ onTransactionAdded }) => {
             required
             className="bg-gray-700 border-gray-600"
           />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="category">Category</Label>
+          <select
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+            className="bg-gray-700 border-gray-600 text-white p-2 rounded-md w-full"
+          >
+            <option value="General">General</option>
+            <option value="Food">Food</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Health">Health</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
         <div className="space-y-2">
           <Label htmlFor="amount">Amount</Label>
@@ -73,7 +94,6 @@ const TransactionForm = ({ onTransactionAdded }) => {
         </div>
         <Button type="submit" className="w-full">Add Transaction</Button>
       </form>
-      {error && <p className="text-red-500 mt-4">{error}</p>}
     </div>
   );
 };

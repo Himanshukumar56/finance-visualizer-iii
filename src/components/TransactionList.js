@@ -19,6 +19,7 @@ const TransactionList = ({ transactions, setTransactions }) => {
               <th className="py-3 px-4 text-left">Description</th>
               <th className="py-3 px-4 text-left">Amount</th>
               <th className="py-3 px-4 text-left">Date</th>
+              <th className="py-3 px-4 text-left">Category</th>
               <th className="py-3 px-4 text-left">Actions</th>
             </tr>
           </thead>
@@ -28,6 +29,7 @@ const TransactionList = ({ transactions, setTransactions }) => {
                 <td className="py-3 px-4">{transaction.description}</td>
                 <td className="py-3 px-4">₹{transaction.amount.toFixed(2)}</td>
                 <td className="py-3 px-4">{new Date(transaction.date).toLocaleDateString()}</td>
+                <td className="py-3 px-4">{transaction.category}</td>
                 <td className="py-3 px-4">
                   <button
                     onClick={() => deleteTransaction(transaction._id)}
