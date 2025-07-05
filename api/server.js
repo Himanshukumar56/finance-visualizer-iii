@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -17,10 +18,13 @@ connection.once('open', () => {
 })
 
 const transactionsRouter = require('./routes/transactions');
-app.use('/api/transactions', transactionsRouter);
+const budgetsRouter = require('./routes/budgets');
 
-// app.listen(port, () => {
-//     console.log(`Server is running on port: ${port}`);
-// });
+app.use('/api/transactions', transactionsRouter);
+app.use('/api/budgets', budgetsRouter);
+
+app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+});
 
 module.exports = app;

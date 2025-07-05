@@ -5,12 +5,17 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const CategoryPieChart = ({ transactions }) => {
+  const categoryExpenses = transactions.reduce((acc, transaction) => {
+    acc[transaction.category] = (acc[transaction.category] || 0) + transaction.amount;
+    return acc;
+  }, {});
+
   const data = {
-    labels: Object.keys(transactions),
+    labels: Object.keys(categoryExpenses),
     datasets: [
       {
         label: 'Expenses by Category',
-        data: Object.values(transactions),
+        data: Object.values(categoryExpenses),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

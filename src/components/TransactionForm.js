@@ -15,10 +15,12 @@ const TransactionForm = ({ onTransactionAdded }) => {
 
     const newTransaction = {
       description,
-      amount,
+      amount: Number(amount),
       date,
       category,
     };
+
+    console.log('Submitting new transaction:', newTransaction);
 
     axios.post('/api/transactions/add', newTransaction)
       .then(res => {

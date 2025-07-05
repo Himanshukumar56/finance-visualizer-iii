@@ -19,7 +19,7 @@ const Dashboard = ({ transactions }) => {
       </div>
       <div className="bg-gray-900 p-4 rounded-lg shadow-lg">
         <h3 className="text-lg font-bold mb-1">Category Breakdown</h3>
-        <CategoryPieChart transactions={categoryExpenses} />
+        <CategoryPieChart transactions={transactions} />
       </div>
       <div className="bg-gray-900 p-4 rounded-lg shadow-lg">
         <h3 className="text-lg font-bold mb-2">Recent Transactions</h3>

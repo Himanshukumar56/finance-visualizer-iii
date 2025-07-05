@@ -7,23 +7,27 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
-  const description = req.body.description;
-  const amount = Number(req.body.amount);
-  const date = Date.parse(req.body.date);
+router.route('/add').post(async (req, res) => {
+  try {
+    const { description, amount, date, category } = req.body;
 
-  const newTransaction = new Transaction({
-    description,
-    amount,
-    date,
-  });
-
-  newTransaction.save()
-    .then(() => res.json('Transaction added!'))
-    .catch(err => {
-      console.error('Database save error:', err);
-      res.status(400).json('Error saving to database: ' + err.message);
+    const newTransaction = new Transaction({
+      description,
+      amount,
+      date,
+      category,
     });
+
+    await newTransaction.save();
+    res.json('Transaction added!');
+  } catch (err) {
+    console.error('Error in /add route:', err);
+    res.status(500).json({
+      message: 'An error occurred',
+      error: err.message,
+      fullError: err,
+    });
+  }
 });
 
 router.route('/:id').get((req, res) => {
