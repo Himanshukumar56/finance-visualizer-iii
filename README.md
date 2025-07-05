@@ -35,6 +35,10 @@ This structure allows for a clear separation between local development and produ
 - **Mongoose**: An Object Data Modeling (ODM) library for MongoDB.
 - **Vercel**: For deployment of the frontend and serverless backend.
 
+## Live Demo
+
+[Link to the deployed application]
+
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
@@ -96,3 +100,7 @@ This application is configured for easy deployment on **Vercel**.
 3.  **Configure Project:** Vercel should automatically detect that you are using Create React App and apply the correct settings. The `vercel.json` file in the repository will handle the backend routing.
 4.  **Add Environment Variables:** In the Vercel project settings, add your `ATLAS_URI` environment variable. This is crucial for the deployed application to connect to your database.
 5.  **Deploy:** Click the "Deploy" button. Vercel will build the frontend, deploy the serverless function from the `/api` directory, and your application will be live.
+
+## Contributing
+
+Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
