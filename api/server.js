@@ -17,10 +17,10 @@ connection.once('open', () => {
 })
 
 const transactionsRouter = require('./routes/transactions');
-app.use('/transactions', transactionsRouter);
+app.use('/api/transactions', transactionsRouter);
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`Server is running on port: ${port}`);
+// });
 
 module.exports = app;
