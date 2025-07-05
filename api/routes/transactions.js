@@ -20,7 +20,10 @@ router.route('/add').post((req, res) => {
 
   newTransaction.save()
     .then(() => res.json('Transaction added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => {
+      console.error('Database save error:', err);
+      res.status(400).json('Error saving to database: ' + err.message);
+    });
 });
 
 router.route('/:id').get((req, res) => {
