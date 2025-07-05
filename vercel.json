@@ -2,6 +2,13 @@
   "version": 2,
   "builds": [
     {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "buildCommand": "npm run build"
+      }
+    },
+    {
       "src": "api/server.js",
       "use": "@vercel/node"
     }
@@ -9,7 +16,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "api/server.js"
+      "destination": "/api/server.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
