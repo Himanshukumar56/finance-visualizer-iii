@@ -19,7 +19,7 @@ const TransactionForm = ({ onTransactionAdded }) => {
       date,
     };
 
-    axios.post('http://localhost:5000/transactions/add', newTransaction)
+    axios.post('/api/transactions/add', newTransaction)
       .then(res => {
         console.log(res.data);
         onTransactionAdded();

@@ -8,7 +8,7 @@ function App() {
   const [transactions, setTransactions] = useState([]);
 
   const fetchTransactions = () => {
-    axios.get('http://localhost:5000/transactions/')
+    axios.get('/api/transactions/')
       .then(response => {
         setTransactions(response.data);
       })

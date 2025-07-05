@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const TransactionList = ({ transactions, setTransactions }) => {
   const deleteTransaction = (id) => {
-    axios.delete('http://localhost:5000/transactions/'+id)
+    axios.delete('/api/transactions/'+id)
       .then(response => { console.log(response.data)});
 
     setTransactions(transactions.filter(el => el._id !== id))
